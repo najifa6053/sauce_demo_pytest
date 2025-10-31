@@ -1,4 +1,3 @@
-# pages/login_page.py
 from selenium.webdriver.common.by import By
 from helpers.utils import wait_for_element
 
