@@ -1,9 +1,8 @@
-# pages/inventory_page.py
 from selenium.webdriver.common.by import By
 from helpers.utils import wait_for_element
 
 class InventoryPage:
-    # Locators
+    
     _inventory_items = (By.CLASS_NAME, "inventory_item")
     _add_to_cart_btn = (By.XPATH, ".//button[contains(@id,'add-to-cart')]")
     _remove_btn = (By.XPATH, ".//button[contains(@id,'remove')]")
@@ -12,7 +11,7 @@ class InventoryPage:
 
     def __init__(self, driver):
         self.driver = driver
-        # ensure page loaded
+        
         wait_for_element(self.driver, *self._inventory_items)
 
     def add_item_to_cart_by_name(self, item_name):
