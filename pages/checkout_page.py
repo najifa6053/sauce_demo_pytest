@@ -1,4 +1,3 @@
-# pages/checkout_page.py
 from selenium.webdriver.common.by import By
 from helpers.utils import wait_for_element
 
@@ -13,9 +12,7 @@ class CheckoutPage:
 
     def __init__(self, driver):
         self.driver = driver
-        # first name field presence signals checkout page loaded or redirected
-        # Don't wait here to avoid blocking; caller should ensure navigation
-
+       
     def fill_details_and_continue(self, first_name, last_name, postal_code):
         self.driver.find_element(*self._first_name).clear()
         self.driver.find_element(*self._first_name).send_keys(first_name)
