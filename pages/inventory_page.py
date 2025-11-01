@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-from helpers.utils import wait_for_visibility
+from helpers.utils import wait_for_visibility, wait_for_clickable
 from selenium.common.exceptions import NoSuchElementException
 
 class InventoryPage(BasePage):
@@ -47,7 +47,12 @@ class InventoryPage(BasePage):
             return 0
 
     def go_to_cart(self):
-        self.driver.find_element(*self.CART_ICON).click()
+        # Wait for cart icon to be clickable and click it
+        cart_icon = wait_for_visibility(self.driver, *self.CART_ICON)
+        wait_for_clickable(self.driver, *self.CART_ICON)
+        cart_icon.click()
+        
+        # Import here to avoid circular imports
         from pages.cart_page import CartPage
         return CartPage(self.driver)
 

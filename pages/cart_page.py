@@ -10,7 +10,12 @@ class CartPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        wait_for_visibility(self.driver, *self.CART_ITEMS, timeout=10)
+        # Wait for either cart items or the continue shopping button
+        try:
+            wait_for_visibility(self.driver, *self.CART_ITEMS, timeout=5)
+        except:
+            # If no items, verify we're on cart page by checking for continue shopping button
+            wait_for_visibility(self.driver, *self.CONTINUE_SHOPPING, timeout=10)
 
     def get_cart_items(self):
         items = self.driver.find_elements(*self.CART_ITEMS)
