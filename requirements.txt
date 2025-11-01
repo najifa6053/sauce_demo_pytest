@@ -1,0 +1,5 @@
+selenium==4.16.0
+pytest==7.4.0
+pytest-dependency==0.5.1
+pytest-rerunfailures==10.3
+pytest-html==4.3.1
